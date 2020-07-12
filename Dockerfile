@@ -4,7 +4,7 @@
 FROM sighmon/balena-enviro-plus:v1
 
 WORKDIR /usr/src
-RUN sudo pip3 install prometheus_client influxdb-client SafecastPy python-periphery sounddevice
+RUN sudo pip3 install prometheus_client influxdb-client SafecastPy python-periphery sounddevice numpy
 COPY enviroplus_exporter/enviroplus_exporter.py enviroplus_exporter.py
 COPY enviroplus_exporter/notecard/notecard/notecard.py notecard/notecard/notecard.py
 
