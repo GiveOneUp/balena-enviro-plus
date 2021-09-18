@@ -12,10 +12,12 @@ Install Docker.
 * `sudo usermod -aG docker pi`
 * Reboot your Pi
 
-Clone this repo, and initialise the submodule.
+Clone this repo, and initialise the submodules.
 
 * `git clone https://github.com/sighmon/balena-enviro-plus`
 * `cd balena-enviro-plus`
+* `git submodule update --init`
+* `cd enviroplus_exporter`
 * `git submodule update --init`
 
 Build and run the Docker image in the background.
