@@ -1,7 +1,7 @@
 ### Export all of the enviro+ sensor data to a Prometheus exporter ###
 
 # Built from /base_image/Dockerfile
-FROM sighmon/balena-enviro-plus:v1
+FROM balenalib/raspberry-pi-debian-python:3.7-build
 
 WORKDIR /usr/src
 RUN sudo pip3 install --upgrade setuptools && sudo pip3 install \
@@ -49,4 +49,6 @@ ENV HUMIDITY_COMPENSATION="24.7"
 # CMD ["sh", "-c", "modprobe i2c-dev && python3 enviroplus_exporter.py --factor $COMPENSATION_FACTOR --influxdb true --luftdaten true --safecast true --notecard false"]
 
 # Uses temperature compensation of 6.6 and humidity compensation of 24.7 and posts to influxdb and luftdaten
-CMD ["sh", "-c", "modprobe i2c-dev && python3 enviroplus_exporter.py --temp $TEMPERATURE_COMPENSATION --humid $HUMIDITY_COMPENSATION --influxdb true --luftdaten true"]
+#CMD ["sh", "-c", "modprobe i2c-dev && python3 enviroplus_exporter.py --temp $TEMPERATURE_COMPENSATION --humid $HUMIDITY_COMPENSATION --influxdb true --luftdaten true"]
+## test based on: https://github.com/sighmon/balena-enviro-plus/issues/12#issuecomment-917342529
+CMD ["python3", "enviroplus_exporter.py", "--temp", "6.6", "--humid", "24.7", "--influxdb", "false", "--luftdaten", "false", "--safecast", "false", "--notecard", "false"]
